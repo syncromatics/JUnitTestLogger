@@ -1,0 +1,11 @@
+language: csharp
+sudo: required
+dotnet: 2.0.0
+
+script:
+  - dotnet build src/JunitTestLogger
+  - "if [[ $TRAVIS_PULL_REQUEST == 'false' && $TRAVIS_TAG ]]; then
+  dotnet pack src/JunitTestLogger --configuration Release /p:Version=$TRAVIS_TAG;
+  sudo nuget update -self;
+  sudo nuget push src/JunitTestLogger/bin/Release/*.nupkg -Source https://www.nuget.org -ApiKey $API_KEY;
+  fi"

@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Microsoft.VisualStudio.TestPlatform.Extension.JUnit.Xml.TestLogger</AssemblyName>
+    <RootNamespace>Microsoft.VisualStudio.TestPlatform.Extension.JUnit.Xml.TestLogger</RootNamespace>
+    <PackageId>JUnitTestLogger</PackageId>
+    <Authors>Syncromatics Engineering</Authors>
+    <Company>Syncromatics</Company>
+    <Product>JUnitTestLogger</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="15.5.0" />
+  </ItemGroup>
+
+</Project>
