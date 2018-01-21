@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.VisualStudio.TestPlatform.Extension.JUnit.Xml.TestLogger</AssemblyName>
-    <RootNamespace>Microsoft.VisualStudio.TestPlatform.Extension.JUnit.Xml.TestLogger</RootNamespace>
+    <AssemblyName>Microsoft.VisualStudio.TestPlatform.Extension.JUnit.Xml.TestAdapter</AssemblyName>
+    <RootNamespace>Microsoft.VisualStudio.TestPlatform.Extension.JUnit.Xml.TestAdapter</RootNamespace>
     <PackageId>JUnitTestLogger</PackageId>
     <Authors>Syncromatics Engineering</Authors>
     <Company>Syncromatics</Company>

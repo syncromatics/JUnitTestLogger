@@ -1,18 +1,16 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel.Client;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel.Logging;
 
-namespace Microsoft.VisualStudio.TestPlatform.Extension.JUnit.Xml.TestLogger
+namespace Microsoft.VisualStudio.TestPlatform.Extension.JUnit.Xml.TestAdapter
 {
     [FriendlyName(FriendlyName)]
     [ExtensionUri(ExtensionUri)]
