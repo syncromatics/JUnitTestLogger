@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.0;net451</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
     <AssemblyName>Microsoft.VisualStudio.TestPlatform.Extension.JUnit.Xml.TestAdapter</AssemblyName>
     <RootNamespace>Microsoft.VisualStudio.TestPlatform.Extension.JUnit.Xml.TestAdapter</RootNamespace>
     <PackageId>JUnitTestLogger</PackageId>
@@ -10,6 +10,7 @@
     <Product>JUnitTestLogger</Product>
     <PackageIconUrl>https://en.gravatar.com/userimage/100017782/89bdc96d68ad4b23998e3cdabdeb6e13.png?size=32</PackageIconUrl>
     <PackageProjectUrl>https://github.com/syncromatics/JUnitTestLogger</PackageProjectUrl>
+    <BuildOutputTargetFolder>build</BuildOutputTargetFolder>
   </PropertyGroup>
 
   <ItemGroup>
