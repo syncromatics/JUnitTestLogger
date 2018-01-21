@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
-    <AssemblyName>Microsoft.VisualStudio.TestPlatform.Extension.JUnit.Xml.TestAdapter</AssemblyName>
-    <RootNamespace>Microsoft.VisualStudio.TestPlatform.Extension.JUnit.Xml.TestAdapter</RootNamespace>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <AssemblyName>JUnit.TestLogger</AssemblyName>
+    <RootNamespace>JUnit.TestLogger</RootNamespace>
     <PackageId>JUnitTestLogger</PackageId>
     <Authors>Syncromatics Engineering</Authors>
     <Company>Syncromatics</Company>
@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <Content Include="JUnitTestLogger.props">
-      <PackagePath>build/netcoreapp2.0</PackagePath>
+      <PackagePath>build/netstandard2.0</PackagePath>
       <Pack>true</Pack>
     </Content>
   </ItemGroup>
