@@ -17,4 +17,10 @@
     <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="15.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="JUnitTestLogger.props">
+      <PackagePath>build/netcoreapp2.0</PackagePath>
+      <Pack>true</Pack>
+    </Content>
+  </ItemGroup>
 </Project>
