@@ -1,11 +1,12 @@
 language: csharp
-sudo: required
-dotnet: 2.0.0
+mono: none
+dotnet: 2.1.402
+os: linux
+
+before_install:
+  - curl -sL https://github.com/annymsMthd/gogitver/releases/download/0.5.1/linux.tar.gz | tar zx
 
 script:
-  - dotnet build src/JunitTestLogger
-  - "if [[ $TRAVIS_PULL_REQUEST == 'false' && $TRAVIS_TAG ]]; then
-  dotnet pack src/JunitTestLogger --configuration Release /p:Version=$TRAVIS_TAG;
-  sudo nuget update -self;
-  sudo nuget push src/JunitTestLogger/bin/Release/*.nupkg -Source https://www.nuget.org -ApiKey $API_KEY;
-  fi"
+  - dotnet restore || travis_terminate 1
+  - dotnet pack --no-restore src/JUnitTestLogger --configuration Release /p:Version=$(./gogitver) || travis_terminate 1;
+  - dotnet nuget push src/JUnitTestLogger/bin/Release/*.nupkg -s https://www.nuget.org/api/v2/package -k $NUGET_API_KEY || travis_terminate 1;
