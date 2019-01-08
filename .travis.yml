@@ -8,5 +8,5 @@ before_install:
 
 script:
   - dotnet restore || travis_terminate 1
-  - dotnet pack --no-restore src/JUnitTestLogger/JUnitTestLogger.csproj --configuration Release /p:Version=$(./gogitver) || travis_terminate 1;
-  - dotnet nuget push src/JUnitTestLogger/bin/Release/*.nupkg -s https://www.nuget.org/api/v2/package -k $NUGET_API_KEY || travis_terminate 1;
+  - dotnet pack --no-restore src/JunitTestLogger/JUnitTestLogger.csproj --configuration Release /p:Version=$(./gogitver) || travis_terminate 1;
+  - dotnet nuget push src/JunitTestLogger/bin/Release/*.nupkg -s https://www.nuget.org/api/v2/package -k $NUGET_API_KEY || travis_terminate 1;
