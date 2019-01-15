@@ -190,6 +190,8 @@ namespace JUnit.TestLogger
         {
             TestResult result = e.Result;
 
+            var displayName = string.IsNullOrEmpty(result.DisplayName) ? result.TestCase.DisplayName : result.DisplayName;
+
             if (TryParseName(result.TestCase.FullyQualifiedName, out var typeName, out var methodName, out _))
             {
                 lock (resultsGuard)
@@ -200,7 +202,7 @@ namespace JUnit.TestLogger
                         result.TestCase.Source,
                         typeName,
                         methodName,
-                        result.TestCase.DisplayName,
+                        displayName,
                         result.Duration,
                         result.ErrorMessage,
                         result.ErrorStackTrace,
@@ -369,7 +371,7 @@ namespace JUnit.TestLogger
         {
             var element = new XElement("testcase",
                 new XAttribute("classname", result.Type),
-                new XAttribute("name", result.Method),
+                new XAttribute("name", result.Name),
                 new XAttribute("time", result.Time.TotalSeconds.ToString("N7", CultureInfo.InvariantCulture)));
 
             if (result.Outcome == TestOutcome.Failed)
