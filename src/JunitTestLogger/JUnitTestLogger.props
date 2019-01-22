@@ -1,7 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <JUnitTestLoggerPath Condition="'$(MSBuildRuntimeType)' != 'Core'">$(MSBuildThisFileDirectory)net451\</JUnitTestLoggerPath>
+    <JUnitTestLoggerPath Condition="'$(MSBuildRuntimeType)' == 'Core'">$(MSBuildThisFileDirectory)netstandard2.0\</JUnitTestLoggerPath>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)JUnit.TestLogger.dll">
+    <Content Include="$(JUnitTestLoggerPath)JUnit.TestLogger.dll">
       <Link>JUnit.TestLogger.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Visible>False</Visible>
