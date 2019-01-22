@@ -249,19 +249,19 @@ namespace JUnit.TestLogger
                 .Select((resultsByAssembly, index) => CreateTestSuiteElement(resultsByAssembly, index))
                 .ToList();
 
-            var element = new XElement("testsuites", allSuites.Select(suites => suites.element));
+            var element = new XElement("testsuites", allSuites.Select(suites => suites.Item1));
 
             var totalTime = TimeSpan.Zero;
             foreach (var suite in allSuites)
-                totalTime += suite.time;
+                totalTime += suite.Item4;
 
             element.SetAttributeValue("time", totalTime.TotalSeconds.ToString("N3", CultureInfo.InvariantCulture));
-            element.SetAttributeValue("tests", allSuites.Sum(suites => suites.tests));
-            element.SetAttributeValue("failures", allSuites.Sum(suites => suites.failures));
+            element.SetAttributeValue("tests", allSuites.Sum(suites => suites.Item2));
+            element.SetAttributeValue("failures", allSuites.Sum(suites => suites.Item3));
             return element;
         }
 
-        private (XElement element, int tests, int failures, TimeSpan time) CreateTestSuiteElement(IGrouping<string, TestResultInfo> resultsByAssembly, int index)
+        private Tuple<XElement, int, int, TimeSpan> CreateTestSuiteElement(IGrouping<string, TestResultInfo> resultsByAssembly, int index)
         {
             List<TestResultInfo> testResultAsError = new List<TestResultInfo>();
             var assemblyPath = resultsByAssembly.Key;
@@ -281,11 +281,11 @@ namespace JUnit.TestLogger
             var allCases = new List<XElement>();
             foreach (var collection in collections)
             {
-                total += collection.total;
-                failed += collection.failed;
-                time += collection.time;
+                total += collection.Item2;
+                failed += collection.Item3;
+                time += collection.Item7;
 
-                allCases.AddRange(collection.elements);
+                allCases.AddRange(collection.Item1);
             }
 
             element.Add(allCases);
@@ -299,10 +299,10 @@ namespace JUnit.TestLogger
             element.SetAttributeValue("failures", failed);
             element.SetAttributeValue("time", time.TotalSeconds.ToString("N3", CultureInfo.InvariantCulture));
 
-            return (element, total, failed, time);
+            return Tuple.Create(element, total, failed, time);
         }
 
-        private static (List<XElement> elements, int total, int passed, int failed, int skipped, int error, TimeSpan time) CreateTestCases(
+        private static Tuple<List<XElement>, int, int, int, int, int, TimeSpan> CreateTestCases(
             IGrouping<string, TestResultInfo> resultsByType,
             List<TestResultInfo> testResultAsError)
         {
@@ -347,7 +347,7 @@ namespace JUnit.TestLogger
                 elements.Add(CreateTestCaseElement(result));
             }
 
-            return (elements, total, passed, failed, skipped, error, time);
+            return Tuple.Create(elements, total, passed, failed, skipped, error, time);
         }
 
         private static bool IsError(TestResultInfo result)
@@ -388,7 +388,7 @@ namespace JUnit.TestLogger
 
         private static bool TryParseName(string testCaseName, out string metadataTypeName, out string metadataMethodName, out string metadataMethodArguments)
         {
-            // This is fragile. The FQN is constructed by a test adapter. 
+            // This is fragile. The FQN is constructed by a test adapter.
             // There is no enforcement that the FQN starts with metadata type name.
 
             string typeAndMethodName;
@@ -433,8 +433,8 @@ namespace JUnit.TestLogger
         {
             if (str != null)
             {
-                // From xml spec (http://www.w3.org/TR/xml/#charsets) valid chars: 
-                // #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]  
+                // From xml spec (http://www.w3.org/TR/xml/#charsets) valid chars:
+                // #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD] | [#x10000-#x10FFFF]
 
                 // we are handling only #x9 | #xA | #xD | [#x20-#xD7FF] | [#xE000-#xFFFD]
                 // because C# support unicode character in range \u0000 to \uFFFF
