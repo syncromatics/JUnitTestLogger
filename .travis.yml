@@ -1,6 +1,6 @@
 language: csharp
 mono: none
-dotnet: 2.1.402
+dotnet: 2.1
 os: linux
 
 before_install:
@@ -9,4 +9,4 @@ before_install:
 script:
   - dotnet restore || travis_terminate 1
   - dotnet pack --no-restore src/JunitTestLogger/JUnitTestLogger.csproj --configuration Release /p:Version=$(./gogitver) || travis_terminate 1;
-  - dotnet nuget push src/JunitTestLogger/bin/Release/*.nupkg -s https://www.nuget.org/api/v2/package -k $NUGET_API_KEY || travis_terminate 1;
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then dotnet nuget push src/JunitTestLogger/bin/Release/*.nupkg -s https://www.nuget.org/api/v2/package -k $NUGET_API_KEY || travis_terminate 1; fi'
