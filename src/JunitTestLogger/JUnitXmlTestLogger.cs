@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
@@ -290,7 +291,7 @@ namespace JUnit.TestLogger
 
             element.Add(allCases);
 
-            var assemblyName = assemblyPath.Split('\\').Last();
+            var assemblyName = AssemblyName.GetAssemblyName(assemblyPath).Name;
 
             element.SetAttributeValue("id", index);
             element.SetAttributeValue("name", assemblyName);
