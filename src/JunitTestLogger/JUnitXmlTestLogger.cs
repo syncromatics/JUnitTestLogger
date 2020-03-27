@@ -239,7 +239,7 @@ namespace JUnit.TestLogger
                 doc.Save(f);
             }
 
-            String resultsFileMessage = String.Format(CultureInfo.CurrentCulture, "Results File: {0}", outputFilePath);
+            string resultsFileMessage = string.Format(CultureInfo.CurrentCulture, "Results File: {0}", outputFilePath);
             Console.WriteLine(resultsFileMessage);
         }
 
@@ -450,7 +450,7 @@ namespace JUnit.TestLogger
         private static string ReplaceInvalidCharacterWithUniCodeEscapeSequence(Match match)
         {
             char x = match.Value[0];
-            return String.Format(@"\u{0:x4}", (ushort)x);
+            return string.Format(@"\u{0:x4}", (ushort)x);
         }
     }
 }
