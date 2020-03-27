@@ -8,6 +8,11 @@ This is a .NET library that adapts unit test output into the JUnit result format
 [![NuGet](https://img.shields.io/nuget/v/JUnitTestLogger.svg)](https://www.nuget.org/packages/JUnitTestLogger/)
 [![NuGet Pre Release](https://img.shields.io/nuget/vpre/JUnitTestLogger.svg)](https://www.nuget.org/packages/JUnitTestLogger/)
 
+## Usage
+
+- Install the nuget package in the unit test project `PM> Install-Package JUnitTestLogger`
+- Run `dotnet test --logger "junit;LogFileName=MyProject.xml"`
+
 ## Code of Conduct
 
 We are committed to fostering an open and welcoming environment. Please read our [code of conduct](CODE_OF_CONDUCT.md) before participating in or contributing to this project.
