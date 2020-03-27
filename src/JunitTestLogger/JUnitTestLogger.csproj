@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
@@ -8,9 +8,17 @@
     <Authors>Syncromatics Engineering</Authors>
     <Company>Syncromatics</Company>
     <Product>JUnitTestLogger</Product>
-    <PackageIconUrl>https://en.gravatar.com/userimage/100017782/89bdc96d68ad4b23998e3cdabdeb6e13.png?size=32</PackageIconUrl>
     <PackageProjectUrl>https://github.com/syncromatics/JUnitTestLogger</PackageProjectUrl>
     <BuildOutputTargetFolder>build</BuildOutputTargetFolder>
+    <Description>Adapts unit test output into the JUnit result format.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <AssemblyVersion>1.1.1</AssemblyVersion>
+    <FileVersion>1.1.1</FileVersion>
+    <Version>1.1.1</Version>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/syncromatics/JUnitTestLogger</RepositoryUrl>
+    <PackageTags>junit unit test</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,5 +30,12 @@
       <PackagePath>build/netstandard2.0</PackagePath>
       <Pack>true</Pack>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\doc\img\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>
