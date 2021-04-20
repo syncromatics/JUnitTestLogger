@@ -4,13 +4,22 @@
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <AssemblyName>JUnit.TestLogger</AssemblyName>
     <RootNamespace>JUnit.TestLogger</RootNamespace>
-    <PackageId>JUnitTestLogger</PackageId>
-    <Authors>Syncromatics Engineering</Authors>
-    <Company>Syncromatics</Company>
-    <Product>JUnitTestLogger</Product>
-    <PackageIconUrl>https://en.gravatar.com/userimage/100017782/89bdc96d68ad4b23998e3cdabdeb6e13.png?size=32</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/syncromatics/JUnitTestLogger</PackageProjectUrl>
+    <PackageId>JUnitTestLogger4GitHub</PackageId>
+    <Authors>Syncromatics Engineering, CompuMaster GmbH</Authors>
+    <Company>CompuMaster GmbH</Company>
+    <Product>JUnitTestLogger4GitHub</Product>
+    <PackageIconUrl></PackageIconUrl>
+    <PackageProjectUrl>https://github.com/CompuMasterGmbH/JUnitTestLogger</PackageProjectUrl>
     <BuildOutputTargetFolder>build</BuildOutputTargetFolder>
+    <Version>1.1.0</Version>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Syncromatics Engineering, CompuMaster GmbH</Copyright>
+    <RepositoryUrl>https://github.com/CompuMasterGmbH/JUnitTestLogger.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>JUnitTestLogger GitHub GitLab</PackageTags>
+    <PackageIcon>logo_64x64.png</PackageIcon>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>This is a .NET library that adapts unit test output into the JUnit result format - with error message and stack trace combined into a single value for compatibility with GitHub/GitLab test pipelines</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,9 +27,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="JUnitTestLogger.props">
+    <Content Include="JUnitTestLogger4GitHub.props">
       <PackagePath>build/netstandard2.0</PackagePath>
       <Pack>true</Pack>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\logo_64x64.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>
