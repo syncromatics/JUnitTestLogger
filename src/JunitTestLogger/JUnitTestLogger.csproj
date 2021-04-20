@@ -11,7 +11,7 @@
     <PackageIconUrl></PackageIconUrl>
     <PackageProjectUrl>https://github.com/CompuMasterGmbH/JUnitTestLogger</PackageProjectUrl>
     <BuildOutputTargetFolder>build</BuildOutputTargetFolder>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Syncromatics Engineering, CompuMaster GmbH</Copyright>
     <RepositoryUrl>https://github.com/CompuMasterGmbH/JUnitTestLogger.git</RepositoryUrl>

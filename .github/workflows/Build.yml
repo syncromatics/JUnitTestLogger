@@ -12,18 +12,13 @@ on:
     workflow_dispatch:
 
 env:
-  # Path to the solution file relative to the root of the project
-  SOLUTION_FILE_PATH: .
-
   # Configuration type to build
   BUILD_CONFIGURATION: Debug
-
-  BUILD_OUTPUT: src/JunitTestLogger/bin/Debug
 
 jobs:
 
     build:
-        runs-on: ubuntu-lastest
+        runs-on: ubuntu-latest
 
         steps:
             - name: Checkout

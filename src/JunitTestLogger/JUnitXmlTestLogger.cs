@@ -378,9 +378,18 @@ namespace JUnit.TestLogger
             if (result.Outcome == TestOutcome.Failed)
             {
                 var failure = new XElement("error");
-                failure.SetAttributeValue("message", RemoveInvalidXmlChar(result.ErrorMessage));
-                failure.Value = RemoveInvalidXmlChar(result.ErrorStackTrace);
-
+                if ((!(string.IsNullOrEmpty(result.ErrorMessage))) && (!(string.IsNullOrEmpty(result.ErrorStackTrace))))
+                {
+                    failure.Value = RemoveInvalidXmlChar(result.ErrorMessage) + System.Environment.NewLine + RemoveInvalidXmlChar(result.ErrorStackTrace);
+                }
+                else if (!(string.IsNullOrEmpty(result.ErrorMessage)))
+                {
+                    failure.Value = RemoveInvalidXmlChar(result.ErrorMessage);
+                }
+                else
+                {
+                    failure.Value = RemoveInvalidXmlChar(result.ErrorStackTrace);
+                }
                 element.Add(failure);
             }
 
