@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JUnitTestLogger", "src\JunitTestLogger\JUnitTestLogger.csproj", "{22303D26-0F4D-4AA3-BD4D-B67B758A69E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JUnitTestLogger", "src\JunitTestLogger\JUnitTestLogger.csproj", "{22303D26-0F4D-4AA3-BD4D-B67B758A69E4}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "NUnit3Test", "NUnit3Test\NUnit3Test.vbproj", "{8532FF21-2B75-48F8-A420-1B8E64E64115}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "xUnitTest", "xUnitTest\xUnitTest.vbproj", "{0398628F-6A14-457F-A5CB-EABDA81780B1}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FinalUnitTestOutputVerifyTests", "FinalUnitTestOutputVerifyTests\FinalUnitTestOutputVerifyTests.vbproj", "{46130D18-2376-4BCF-95CF-A24A98D3D626}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{22303D26-0F4D-4AA3-BD4D-B67B758A69E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22303D26-0F4D-4AA3-BD4D-B67B758A69E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22303D26-0F4D-4AA3-BD4D-B67B758A69E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8532FF21-2B75-48F8-A420-1B8E64E64115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8532FF21-2B75-48F8-A420-1B8E64E64115}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8532FF21-2B75-48F8-A420-1B8E64E64115}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8532FF21-2B75-48F8-A420-1B8E64E64115}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0398628F-6A14-457F-A5CB-EABDA81780B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0398628F-6A14-457F-A5CB-EABDA81780B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0398628F-6A14-457F-A5CB-EABDA81780B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0398628F-6A14-457F-A5CB-EABDA81780B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46130D18-2376-4BCF-95CF-A24A98D3D626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46130D18-2376-4BCF-95CF-A24A98D3D626}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46130D18-2376-4BCF-95CF-A24A98D3D626}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46130D18-2376-4BCF-95CF-A24A98D3D626}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

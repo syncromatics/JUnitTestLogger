@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<testsuites time="0.076" tests="2" failures="1">
+  <testsuite id="0" name="NUnit3Test" tests="2" failures="1" time="0.076">
+    <testcase classname="NUnit3Test.NUnit3Test.DemoUnitTest" name="FailingTest" time="0.0757850">
+      <error>  Expected: 1
+  But was:  2
+
+   at NUnit3Test.NUnit3Test.DemoUnitTest.FailingTest() in D:\GitHub-OpenSource\JUnitTestLogger\NUnit3Test\DemoUnitTest.vb:line 20
+</error>
+    </testcase>
+    <testcase classname="NUnit3Test.NUnit3Test.DemoUnitTest" name="SuccessfulTest" time="0.0004200" />
+  </testsuite>
+</testsuites>

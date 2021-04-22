@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<testsuites time="0.012" tests="2" failures="1">
+  <testsuite id="0" name="xUnitTest" tests="2" failures="1" time="0.012">
+    <testcase classname="xUnitTest.xUnitTest.DemoUnitTest" name="xUnitTest.xUnitTest.DemoUnitTest.SuccessfulTest" time="0.0072317" />
+    <testcase classname="xUnitTest.xUnitTest.DemoUnitTest" name="xUnitTest.xUnitTest.DemoUnitTest.FailingTest" time="0.0047288">
+      <error>Assert.Equal() Failure
+Expected: 1
+Actual:   2
+   at xUnitTest.xUnitTest.DemoUnitTest.FailingTest() in D:\GitHub-OpenSource\JUnitTestLogger\xUnitTest\DemoUnitTest.vb:line 17</error>
+    </testcase>
+  </testsuite>
+</testsuites>

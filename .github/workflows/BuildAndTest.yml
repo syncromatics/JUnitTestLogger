@@ -1,0 +1,109 @@
+name: Build and Test
+
+# Controls when the action will run.
+on:
+    # Triggers the workflow on push or pull request events but only for the master branch
+    push:
+        branches: [master]
+    pull_request:
+        branches: [master]
+
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
+
+env:
+    # Configuration type to build
+    BUILD_CONFIGURATION: Debug
+
+jobs:
+    test:
+        #needs: build
+        runs-on: ${{ matrix.os }}
+
+        variables:
+             dircommand: ls -la
+             copycommand: cp
+
+        strategy:
+            fail-fast: false
+            matrix:
+                os: [windows-latest, ubuntu-latest, macos-latest]
+                include:
+                    - os: macos-latest
+                      runNetExe: mono
+                    - os: windows-latest
+                      dircommand: dir
+                      copycommand: copy
+
+        # the build-and-test job might be skipped, we don't need to run this job then
+        #if: success() || failure()
+
+        env:
+            RESULTS_PATH: TestResults.xml
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Setup .NET Core
+              uses: actions/setup-dotnet@v1
+              with:
+                  dotnet-version: 5.0.x
+
+            - name: Dir Listing
+              run: {{dircommand}}
+
+            - name: Install dependencies
+              run: dotnet restore
+
+            - name: Build
+              run: dotnet build --configuration=${{env.BUILD_CONFIGURATION}} --no-restore
+
+            - name: Run NUnit3 tests
+              run: dotnet test NUnit3Test -v n --framework net5.0 --results-directory test-results --logger junit --configuration=${{env.BUILD_CONFIGURATION}} --no-restore
+
+            - name: Run xUnit tests
+              run: dotnet test xUnitTest -v n --framework net5.0 --results-directory test-results --logger junit --configuration=${{env.BUILD_CONFIGURATION}} --no-restore
+
+            - name: Run final unit tests on output of previous unit tests
+              run: |
+                - '{{copycommand}} "NUnit3Test/TestResults/TestResults.xml" "FinalUnitTestOutputVerifyTests/previous-test-results/testresults.nunit3.xml"'
+                - '{{copycommand}} "xUnitTest/TestResults/TestResults.xml" "FinalUnitTestOutputVerifyTests/previous-test-results/testresults.xunit.xml"'
+                - 'dotnet test FinalUnitTestOutputVerifyTests -v n --framework net5.0 --results-directory test-results --logger junit --configuration=${{env.BUILD_CONFIGURATION}} --no-restore'
+
+            - name: 'Dir Listing test-results'
+              run: '{{dircommand}} test-results'
+
+            #Following lines maybe required again after test&dev?!
+            #  # the action is useless on pull_request events
+            #  # (it can not create check runs or pull request comments)
+            #  if: always() #&& startsWith(matrix.os, 'ubuntu') #&& github.event_name != 'pull_request'
+
+            - name: Unit Test Results (Linux)
+              uses: EnricoMi/publish-unit-test-result-action@v1
+              if: always() && startsWith(matrix.os, 'ubuntu')
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  files: "test-results/TestResults.xml"
+                  check_run_annotations: all tests
+                  comment_title: Unit Test Statistics (${{matrix.os}})
+                  check_name: Unit Test Results (${{matrix.os}})
+                  report_individual_runs: true
+
+            - name: Unit Test Results (Win/Mac)
+              uses: EnricoMi/publish-unit-test-result-action/composite@v1
+              if: always() && (!(startsWith(matrix.os, 'ubuntu')))
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  files: "test-results/TestResults.xml"
+                  check_run_annotations: all tests
+                  comment_title: Unit Test Statistics (${{matrix.os}})
+                  check_name: Unit Test Results (${{matrix.os}})
+                  report_individual_runs: true
+
+            - name: Publish Unit Test Results
+              uses: actions/upload-artifact@v2
+              if: always()
+              with:
+                  name: NUnit Test Results ${{ matrix.os }}
+                  path: test-results/TestResults.xml
